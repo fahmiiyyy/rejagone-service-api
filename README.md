@@ -1,58 +1,216 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Rejagone Service API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+REST API backend untuk sistem booking barbershop menggunakan Laravel dan MySQL.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Master Data Service
+  - CRUD Services
+  - CRUD Barbers
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Booking Service
+  - View schedules
+  - Create booking
+  - View booking detail
+  - Delete booking
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Payment Service
+  - Create payment
+  - Validate payment
+  - Update booking status
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Tech Stack
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Laravel 13
+- PHP 8.3+
+- MySQL 8+
+- Composer 2+
+- Git & GitHub
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+# Clone Repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/USERNAME/rejagone-service-api.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Masuk ke folder project:
 
-## Contributing
+```bash
+cd rejagone-service-api
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+# Install Dependencies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Setup Environment
 
-## License
+Copy file environment:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Windows CMD
+
+```bash
+copy .env.example .env
+```
+
+## Git Bash
+
+```bash
+cp .env.example .env
+```
+
+Generate application key:
+
+```bash
+php artisan key:generate
+```
+
+---
+
+# Setup Database
+
+Buat database MySQL baru:
+
+```text
+rejagone_service_api
+```
+
+Lalu edit file `.env`
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=rejagone_service_api
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+---
+
+# Run Migration
+
+```bash
+php artisan migrate
+```
+
+---
+
+# Run Server
+
+```bash
+php artisan serve
+```
+
+Server akan berjalan di:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+# Git Collaboration Rules
+
+## Jangan langsung commit ke main
+
+Gunakan branch masing-masing:
+
+```bash
+git checkout -b feature/nama-fitur
+```
+
+Contoh:
+
+```bash
+git checkout -b feature/booking-api
+```
+
+---
+
+# Pull Latest Changes
+
+Sebelum mulai ngoding:
+
+```bash
+git pull origin main
+```
+
+---
+
+# Push Branch
+
+```bash
+git add .
+git commit -m "Add booking API"
+git push origin feature/booking-api
+```
+
+---
+
+# API Endpoints
+
+## Services
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /api/services | Get all services |
+| POST | /api/services | Create service |
+| PUT | /api/services/{id} | Update service |
+| DELETE | /api/services/{id} | Delete service |
+
+---
+
+## Barbers
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /api/barbers | Get all barbers |
+| POST | /api/barbers | Create barber |
+| PUT | /api/barbers/{id} | Update barber |
+| DELETE | /api/barbers/{id} | Delete barber |
+
+---
+
+## Bookings
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /api/bookings | Get all bookings |
+| POST | /api/bookings | Create booking |
+| GET | /api/bookings/{id} | Booking detail |
+| DELETE | /api/bookings/{id} | Delete booking |
+
+---
+
+## Payments
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /api/payments | Get payments |
+| POST | /api/payments | Create payment |
+
+---
+
+# Booking Status Flow
+
+```text
+need_payment -> paid -> completed
+```
+
+---
+
+# Contributors
+
+- Fahmi
+- Team Members
