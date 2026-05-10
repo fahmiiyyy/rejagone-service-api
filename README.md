@@ -34,7 +34,7 @@ REST API backend untuk sistem booking barbershop menggunakan Laravel dan MySQL.
 # Clone Repository
 
 ```bash
-git clone https://github.com/USERNAME/rejagone-service-api.git
+git clone https://github.com/fahmiiyyy/rejagone-service-api.git
 ```
 
 Masuk ke folder project:
@@ -49,30 +49,6 @@ cd rejagone-service-api
 
 ```bash
 composer install
-```
-
----
-
-# Setup Environment
-
-Copy file environment:
-
-## Windows CMD
-
-```bash
-copy .env.example .env
-```
-
-## Git Bash
-
-```bash
-cp .env.example .env
-```
-
-Generate application key:
-
-```bash
-php artisan key:generate
 ```
 
 ---
