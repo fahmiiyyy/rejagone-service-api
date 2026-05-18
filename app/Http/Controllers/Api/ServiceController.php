@@ -14,7 +14,15 @@ class ServiceController extends Controller
 
         return response()->json([
             'message' => 'List of services',
-            'data' => $services
+            'data' => $services->map(function ($service) {
+
+                return [
+                    'id' => $service->id,
+                    'name' => $service->name,
+                    'price' => $service->price,
+                    'duration' => $service->duration,
+                ];
+            })
         ]);
     }
 
