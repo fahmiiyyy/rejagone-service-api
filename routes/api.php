@@ -15,6 +15,13 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // PROTECTED ROUTES
 Route::middleware('jwt.verify')->group(function () {
+    Route::apiResource('bookings', BookingController::class);
+
+    Route::apiResource('payments', PaymentController::class)
+        ->only(['index', 'store', 'show']);
+});
+
+Route::middleware(['jwt.verify', 'admin'])->group(function () {
 
     Route::apiResource('services', ServiceController::class);
 
@@ -22,8 +29,4 @@ Route::middleware('jwt.verify')->group(function () {
 
     Route::apiResource('schedules', ScheduleController::class);
 
-    Route::apiResource('bookings', BookingController::class);
-
-    Route::apiResource('payments', PaymentController::class)
-        ->only(['index', 'store', 'show']);
 });
