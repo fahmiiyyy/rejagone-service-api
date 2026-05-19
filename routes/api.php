@@ -46,6 +46,9 @@ Route::middleware('jwt.verify')->group(function () {
         ->only(['index', 'store', 'show']);
 });
 
+
+
+
 //
 // ADMIN ROUTES
 // wajib JWT + role admin
